@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="KGk-i7-Jjw" customClass="SearchTableViewCell" customModule="Wine_Rack" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="147.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="guD-ua-eBT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="147.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gpd-mD-NSC">
+                                <rect key="frame" x="20" y="10" width="75" height="75"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="GSb-Nu-ujv"/>
+                                    <constraint firstAttribute="height" constant="75" id="haz-zo-7hA"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-nS-yWq">
+                                <rect key="frame" x="105" y="15" width="205" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Varietal type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTX-DA-52M">
+                                <rect key="frame" x="105" y="40" width="205" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vintage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoU-RP-6zW">
+                                <rect key="frame" x="105" y="62.5" width="205" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ye5-9k-n4M">
+                                <rect key="frame" x="105" y="95" width="197" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqR-Bz-vqD">
+                                        <rect key="frame" x="0.0" y="0.0" width="60.5" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Info">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="infoButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3PV-MT-WKB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYp-n8-bP3">
+                                        <rect key="frame" x="68.5" y="0.0" width="60" height="40"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="WineBottle">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wineRackButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gtd-O3-2ud"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XG-zS-ROI">
+                                        <rect key="frame" x="136.5" y="0.0" width="60.5" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" image="Heart">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wishListButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bQc-KM-BgX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bSh-dM-FSV"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fTX-DA-52M" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="2Wx-Kg-ScM"/>
+                            <constraint firstItem="eoU-RP-6zW" firstAttribute="top" secondItem="fTX-DA-52M" secondAttribute="bottom" constant="4.5" id="4wJ-lm-VKc"/>
+                            <constraint firstItem="rwI-nS-yWq" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="I4k-eW-SJe"/>
+                            <constraint firstItem="eoU-RP-6zW" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="KUe-kF-NRU"/>
+                            <constraint firstItem="Ye5-9k-n4M" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="ReW-D0-x1W"/>
+                            <constraint firstItem="fTX-DA-52M" firstAttribute="top" secondItem="rwI-nS-yWq" secondAttribute="bottom" constant="5" id="Skm-r7-L2a"/>
+                            <constraint firstItem="Ye5-9k-n4M" firstAttribute="top" secondItem="eoU-RP-6zW" secondAttribute="bottom" constant="14.5" id="lml-UR-0oY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Gpd-mD-NSC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="5jb-uv-fsb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ye5-9k-n4M" secondAttribute="trailing" constant="10" id="9Gl-De-gd6"/>
+                    <constraint firstItem="Gpd-mD-NSC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="MFH-AY-k9u"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ye5-9k-n4M" secondAttribute="bottom" constant="4.5" id="gbd-Vy-RCc"/>
+                    <constraint firstItem="rwI-nS-yWq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="hfZ-ae-QIo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="fTX-DA-52M" secondAttribute="trailing" constant="2" id="oPV-4n-l52"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="rwI-nS-yWq" secondAttribute="trailing" constant="2" id="pnh-XW-xQ8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eoU-RP-6zW" secondAttribute="trailing" constant="2" id="ySm-mO-WsR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="infoButton" destination="rqR-Bz-vqD" id="5nO-oL-VPV"/>
+                <outlet property="labelImageView" destination="Gpd-mD-NSC" id="eD2-eC-S6A"/>
+                <outlet property="nameLabel" destination="rwI-nS-yWq" id="iNF-lA-g5k"/>
+                <outlet property="typeLabel" destination="fTX-DA-52M" id="zGc-Wb-s0P"/>
+                <outlet property="vintageLabel" destination="eoU-RP-6zW" id="Of7-g1-hde"/>
+                <outlet property="wineRackButton" destination="VYp-n8-bP3" id="TLY-YQ-q8E"/>
+                <outlet property="wishListButton" destination="7XG-zS-ROI" id="cRs-HC-D1q"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="127"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Heart" width="25" height="25"/>
+        <image name="WineBottle" width="25" height="25"/>
+    </resources>
+</document>

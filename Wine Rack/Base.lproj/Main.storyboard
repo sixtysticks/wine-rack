@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BRO-Cx-PL6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Wines-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WineListViewController" customModule="Wine_Rack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4a-8N-ExB" customClass="WRNavBar" customModule="Wine_Rack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Wine Rack" id="srI-xg-JY2">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="1v3-oO-c8q">
+                                            <connections>
+                                                <action selector="openSearchController:" destination="BYZ-38-t0r" id="1kq-0X-tla"/>
+                                                <segue destination="4gF-QA-GbY" kind="popoverPresentation" popoverAnchorBarButtonItem="1v3-oO-c8q" id="bZO-ma-hgu">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfs-HS-lwY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WineCell" id="BeR-HQ-Gim">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeR-HQ-Gim" id="77H-7W-dBF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="x1d-ek-o6E"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="zbo-pH-FE8"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ZQ-GV-C4D" userLabel="No Wines View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flZ-Rm-cKt">
+                                        <rect key="frame" x="87.5" y="177.5" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="dNo-gq-XAE"/>
+                                            <constraint firstAttribute="width" constant="200" id="yzz-uP-M7F"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="flZ-Rm-cKt" firstAttribute="centerX" secondItem="7ZQ-GV-C4D" secondAttribute="centerX" id="duf-lc-J08"/>
+                                    <constraint firstItem="flZ-Rm-cKt" firstAttribute="centerY" secondItem="7ZQ-GV-C4D" secondAttribute="centerY" id="rer-OX-Lfk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mfs-HS-lwY" secondAttribute="trailing" id="AbC-f9-XNe"/>
+                            <constraint firstItem="v4a-8N-ExB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CKf-1y-ibX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7ZQ-GV-C4D" secondAttribute="bottom" id="EWs-Fe-xvz"/>
+                            <constraint firstItem="v4a-8N-ExB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NCG-y8-vaO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Mfs-HS-lwY" secondAttribute="bottom" id="eza-1i-bsj"/>
+                            <constraint firstItem="7ZQ-GV-C4D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="g0l-AG-Ipo"/>
+                            <constraint firstItem="7ZQ-GV-C4D" firstAttribute="top" secondItem="v4a-8N-ExB" secondAttribute="bottom" id="hq7-4Q-ZJw"/>
+                            <constraint firstItem="Mfs-HS-lwY" firstAttribute="top" secondItem="v4a-8N-ExB" secondAttribute="bottom" id="k0c-0c-lVt"/>
+                            <constraint firstAttribute="trailing" secondItem="7ZQ-GV-C4D" secondAttribute="trailing" id="lq3-Pt-Sqi"/>
+                            <constraint firstAttribute="trailing" secondItem="v4a-8N-ExB" secondAttribute="trailing" id="lud-Hi-ueb"/>
+                            <constraint firstItem="Mfs-HS-lwY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ths-9v-hIO"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Wines" image="WineBottle" id="1DU-cW-FZk"/>
+                    <connections>
+                        <outlet property="noWinesLabel" destination="flZ-Rm-cKt" id="cgA-4m-XRJ"/>
+                        <outlet property="noWinesView" destination="7ZQ-GV-C4D" id="1vC-Nf-WwI"/>
+                        <outlet property="searchButton" destination="1v3-oO-c8q" id="rOd-sq-Wfw"/>
+                        <outlet property="wineListTableView" destination="Mfs-HS-lwY" id="qip-aE-e8h"/>
+                        <outlet property="wineRackNavBar" destination="v4a-8N-ExB" id="JYw-Y8-dnp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="-8.5457271364317844"/>
+        </scene>
+        <!--Wine Search View Controller-->
+        <scene sceneID="Gsw-mL-3rZ">
+            <objects>
+                <viewController id="4gF-QA-GbY" customClass="WineSearchViewController" customModule="Wine_Rack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fF2-8k-JtF"/>
+                        <viewControllerLayoutGuide type="bottom" id="zMw-iR-ebj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ump-bg-8oD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEX-zt-eOk" customClass="WRNavBar" customModule="Wine_Rack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xZt-6X-32p"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Search for wine" id="WQa-bV-zLQ">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="ZHy-z9-4WO">
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="4gF-QA-GbY" id="rvI-mr-nmf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-Yc-8aq">
+                                <rect key="frame" x="16" y="84" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eUb-Sb-jKg"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4gF-QA-GbY" id="Hse-AI-DuC"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0X-E8-zQc">
+                                <rect key="frame" x="16" y="144" width="343" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Q5R-Ob-bhd"/>
+                                </constraints>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="4gF-QA-GbY" eventType="touchUpInside" id="mZu-3q-lJF"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KHR-tO-eoU">
+                                <rect key="frame" x="0.0" y="214" width="375" height="453"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="120" id="KhL-Ed-YfS" customClass="SearchTableViewCell" customModule="Wine_Rack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KhL-Ed-YfS" id="9Mx-gw-MFr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4gF-QA-GbY" id="ZOi-Kb-i7A"/>
+                                    <outlet property="delegate" destination="4gF-QA-GbY" id="KOi-1O-9zy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h0X-E8-zQc" firstAttribute="trailing" secondItem="ump-bg-8oD" secondAttribute="trailingMargin" id="0Tk-zb-pzq"/>
+                            <constraint firstItem="ZEX-zt-eOk" firstAttribute="top" secondItem="fF2-8k-JtF" secondAttribute="bottom" id="2VE-4X-zbq"/>
+                            <constraint firstAttribute="trailing" secondItem="ZEX-zt-eOk" secondAttribute="trailing" id="5A2-aO-Jq7"/>
+                            <constraint firstItem="ZEX-zt-eOk" firstAttribute="leading" secondItem="ump-bg-8oD" secondAttribute="leading" id="AP3-Ok-xh8"/>
+                            <constraint firstItem="zMw-iR-ebj" firstAttribute="top" secondItem="KHR-tO-eoU" secondAttribute="bottom" id="C9v-bi-CtL"/>
+                            <constraint firstItem="KHR-tO-eoU" firstAttribute="top" secondItem="h0X-E8-zQc" secondAttribute="bottom" constant="20" id="IoD-vH-wPq"/>
+                            <constraint firstAttribute="trailing" secondItem="KHR-tO-eoU" secondAttribute="trailing" id="JMb-Cu-d49"/>
+                            <constraint firstItem="oqa-Yc-8aq" firstAttribute="leading" secondItem="ump-bg-8oD" secondAttribute="leadingMargin" id="V8m-CF-2Rn"/>
+                            <constraint firstItem="oqa-Yc-8aq" firstAttribute="trailing" secondItem="ump-bg-8oD" secondAttribute="trailingMargin" id="mV3-oe-dcI"/>
+                            <constraint firstItem="h0X-E8-zQc" firstAttribute="top" secondItem="oqa-Yc-8aq" secondAttribute="bottom" constant="10" id="oyi-8Z-Xwo"/>
+                            <constraint firstItem="KHR-tO-eoU" firstAttribute="leading" secondItem="ump-bg-8oD" secondAttribute="leading" id="rlb-M0-mGN"/>
+                            <constraint firstItem="h0X-E8-zQc" firstAttribute="leading" secondItem="ump-bg-8oD" secondAttribute="leadingMargin" id="sd5-BR-lcH"/>
+                            <constraint firstItem="oqa-Yc-8aq" firstAttribute="top" secondItem="ZEX-zt-eOk" secondAttribute="bottom" constant="20" id="zYM-SK-Djk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchButton" destination="h0X-E8-zQc" id="IQg-Sd-a5y"/>
+                        <outlet property="searchResultsTableView" destination="KHR-tO-eoU" id="yhw-H0-lAM"/>
+                        <outlet property="searchTextField" destination="oqa-Yc-8aq" id="rXE-Ur-51y"/>
+                        <outlet property="wineRackNavBar" destination="ZEX-zt-eOk" id="hwx-la-GFx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K1k-uQ-dM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2048.8000000000002" y="345.87706146926541"/>
+        </scene>
+        <!--Wine Rack Tab Bar Controller-->
+        <scene sceneID="4ot-5u-SfN">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="BRO-Cx-PL6" customClass="WineRackTabBarController" customModule="Wine_Rack" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="dRt-sG-Lpr">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="iXl-y2-okG"/>
+                        <segue destination="UPO-lQ-yJU" kind="relationship" relationship="viewControllers" id="SBi-GY-e1H"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQy-DE-BbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-42" y="331"/>
+        </scene>
+        <!--Wishlist-->
+        <scene sceneID="4xv-3e-QwJ">
+            <objects>
+                <viewController id="UPO-lQ-yJU" customClass="WishlistViewController" customModule="Wine_Rack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dLd-Az-w6M"/>
+                        <viewControllerLayoutGuide type="bottom" id="i79-E0-tuV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wox-7k-8px">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGo-6u-ecF" customClass="WRNavBar" customModule="Wine_Rack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Wine Rack" id="w9l-Sz-K1y">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="nF1-ca-Q80">
+                                            <connections>
+                                                <action selector="openSearchController:" destination="UPO-lQ-yJU" id="ITQ-1n-ZsT"/>
+                                                <segue destination="4gF-QA-GbY" kind="presentation" id="OwP-wv-6Du"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-Hh-kLz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WineCell" textLabel="Nj9-eU-8QM" detailTextLabel="Lv6-9U-rmC" style="IBUITableViewCellStyleSubtitle" id="9gz-HH-IPC">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9gz-HH-IPC" id="usp-3V-aC3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nj9-eU-8QM">
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lv6-9U-rmC">
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UPO-lQ-yJU" id="miQ-3i-e1Y"/>
+                                    <outlet property="delegate" destination="UPO-lQ-yJU" id="4qK-do-zah"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9J-Wj-Ce1" userLabel="No Wines View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yS-Ce-SpU">
+                                        <rect key="frame" x="87.5" y="177" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="61E-Je-tao"/>
+                                            <constraint firstAttribute="height" constant="200" id="QWW-sx-iip"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="8yS-Ce-SpU" firstAttribute="centerX" secondItem="T9J-Wj-Ce1" secondAttribute="centerX" id="Mmo-z6-wEo"/>
+                                    <constraint firstItem="8yS-Ce-SpU" firstAttribute="centerY" secondItem="T9J-Wj-Ce1" secondAttribute="centerY" id="gjU-VN-m6Q"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mGo-6u-ecF" firstAttribute="leading" secondItem="wox-7k-8px" secondAttribute="leading" id="Iz9-1V-PJy"/>
+                            <constraint firstItem="i79-E0-tuV" firstAttribute="top" secondItem="Xgs-Hh-kLz" secondAttribute="bottom" id="Lge-bf-O86"/>
+                            <constraint firstItem="mGo-6u-ecF" firstAttribute="top" secondItem="dLd-Az-w6M" secondAttribute="bottom" id="N4e-7A-bS8"/>
+                            <constraint firstAttribute="trailing" secondItem="mGo-6u-ecF" secondAttribute="trailing" id="Y7j-Mb-4JI"/>
+                            <constraint firstItem="T9J-Wj-Ce1" firstAttribute="top" secondItem="mGo-6u-ecF" secondAttribute="bottom" id="aPC-U9-3e0"/>
+                            <constraint firstAttribute="trailing" secondItem="Xgs-Hh-kLz" secondAttribute="trailing" id="kbe-5n-teM"/>
+                            <constraint firstAttribute="trailing" secondItem="T9J-Wj-Ce1" secondAttribute="trailing" id="lfl-82-uP4"/>
+                            <constraint firstItem="i79-E0-tuV" firstAttribute="top" secondItem="T9J-Wj-Ce1" secondAttribute="bottom" id="ms6-kI-1Xc"/>
+                            <constraint firstItem="T9J-Wj-Ce1" firstAttribute="leading" secondItem="wox-7k-8px" secondAttribute="leading" id="nzf-uj-P2H"/>
+                            <constraint firstItem="Xgs-Hh-kLz" firstAttribute="leading" secondItem="wox-7k-8px" secondAttribute="leading" id="s1W-n8-5Ad"/>
+                            <constraint firstItem="Xgs-Hh-kLz" firstAttribute="top" secondItem="mGo-6u-ecF" secondAttribute="bottom" id="vki-hb-LxU"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Wishlist" image="Heart" id="QL4-kR-zwv"/>
+                    <connections>
+                        <outlet property="noWinesLabel" destination="8yS-Ce-SpU" id="uNm-LP-VIc"/>
+                        <outlet property="noWinesView" destination="T9J-Wj-Ce1" id="CGx-74-3Ze"/>
+                        <outlet property="searchButton" destination="nF1-ca-Q80" id="4nt-kJ-0k8"/>
+                        <outlet property="wineListTableView" destination="Xgs-Hh-kLz" id="SbF-uF-bGX"/>
+                        <outlet property="wineRackNavBar" destination="mGo-6u-ecF" id="MZD-R2-3rb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zwe-VO-z7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1052" y="721.88905547226398"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Heart" width="25" height="25"/>
+        <image name="WineBottle" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OwP-wv-6Du"/>
+    </inferredMetricsTieBreakers>
+</document>
