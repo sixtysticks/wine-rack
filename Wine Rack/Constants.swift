@@ -37,4 +37,9 @@ struct Constants {
         static let ApiKey = "bff4cf354ef9ae90a3c9b4a49bed3d8d"
     }
     
+    struct General {
+        static let LabelUrlMedium = "m.jpg"
+        static let LabelUrlLarge = "l.jpg"
+    }
+    
 }

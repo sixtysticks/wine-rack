@@ -20,10 +20,9 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: IBActions
     
-    @IBAction func openSearchController(_ sender: UIBarButtonItem) {
-    }
-    
     // MARK: Variables/Constants
+    
+    var dummyBool: Bool = false
     
     // MARK: Lifecycle methods
     
@@ -33,15 +32,29 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
         // Set nav bar style
         wineRackNavBar.setBarBackgroundColor(UIColor.wineRackLightRed)
         
+        // Set view depending on whether user has saved wines
+        hasSavedWines(dummyBool)
+        
         // Hide tableView by default, and only show if we have wines saved
         wineListTableView.isHidden = true
         
         noWinesLabel.text = Constants.NoWinesLabel.WishList
         noWinesLabel.textColor = UIColor.wineRackLightRed
-        
     }
     
     // MARK: Private methods
+    
+    func hasSavedWines(_ wines: Bool) {
+        if wines {
+            wineListTableView.isHidden = false
+            noWinesView.isHidden = true
+        } else {
+            wineListTableView.isHidden = true
+            noWinesView.isHidden = false
+            noWinesLabel.text = Constants.NoWinesLabel.WineList
+            noWinesLabel.textColor = UIColor.wineRackLightRed
+        }
+    }
     
     // MARK: Delegate methods
     
@@ -51,7 +64,6 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WineCell")!
-        
         
         return cell
     }

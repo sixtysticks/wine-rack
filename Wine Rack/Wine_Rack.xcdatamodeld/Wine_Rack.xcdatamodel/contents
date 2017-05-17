@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Wine" representedClassName="Wine" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="labelUrl" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="vintage" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="wineType" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="wineRack" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WineRack" inverseName="wines" inverseEntity="WineRack" syncable="YES"/>
+        <relationship name="wishList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WishList" inverseName="wines" inverseEntity="WishList" syncable="YES"/>
+    </entity>
+    <entity name="WineRack" representedClassName="WineRack" syncable="YES">
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="wineRack" inverseEntity="Wine" syncable="YES"/>
+    </entity>
+    <entity name="WishList" representedClassName="WishList" syncable="YES">
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="wishList" inverseEntity="Wine" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Wine" positionX="-569" positionY="-63" width="128" height="180"/>
+        <element name="WineRack" positionX="-531" positionY="27" width="128" height="60"/>
+        <element name="WishList" positionX="-504" positionY="36" width="128" height="60"/>
+    </elements>
 </model>

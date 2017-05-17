@@ -17,6 +17,7 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchResultsTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: IBActions
     
@@ -29,46 +30,20 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         fetchSearchRequest()
     }
     
-    func fetchSearchRequest() {
-        self.wineArray.removeAll()
-        
-        searchTextField.resignFirstResponder()
-        
-        WineAPIClient.sharedInstance().searchforWine(searchquery: searchTextField.text!) { (result, error) in
-            if error == nil {
-                guard let products = result?["Products"] else {
-                    print("ERROR IN GUARD FOR PRODUCTS")
-                    return
-                }
-                
-                guard let wineList = products["List"] else {
-                    print("ERROR IN GUARD FOR LIST")
-                    return
-                }
-                
-                for wine in wineList as! [AnyObject] {
-                    let searchedWine = Wine(dictionary: wine as! [String: AnyObject])
-                    
-                    self.wineArray.append(searchedWine)
-                    
-                }
-                
-                DispatchQueue.main.async {
-                    
-                    self.searchResultsTableView.reloadData()
-                }
-            }
-        }
-    }
-    
     // MARK: Variables/Constants
     
+    let stack = CoreDataStack.sharedInstance()
     var wineArray = [Wine]()
+    var wineRack = WineRack(context: CoreDataStack.sharedInstance().context)
     
     // MARK: Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide tableview and activity indicator
+        searchResultsTableView.isHidden = true
+        activityIndicator.stopAnimating()
         
         // Open keyboard
         searchTextField.becomeFirstResponder()
@@ -91,7 +66,6 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         searchButton.layer.cornerRadius = 25.0
         
         // Register nib
-//        tableView.register(UINib(nibName: "PhotoPostTableViewCell", bundle: nil), forCellReuseIdentifier: "PhotoPostCell")
         searchResultsTableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
         
         self.searchResultsTableView.rowHeight = UITableViewAutomaticDimension
@@ -105,6 +79,55 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     // MARK: Private methods
     
+    func fetchSearchRequest() {
+        wineArray.removeAll()
+        searchResultsTableView.isHidden = true
+        self.activityIndicator.startAnimating()
+        searchTextField.resignFirstResponder()
+        
+        WineAPIClient.sharedInstance().searchforWine(searchquery: searchTextField.text!) { (result, error) in
+            if error == nil {
+                
+                guard let products = result?["Products"] else {
+                    print("ERROR IN GUARD FOR PRODUCTS")
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                    }
+                    return
+                }
+                
+                guard let wineList = products["List"] else {
+                    print("ERROR IN GUARD FOR LIST")
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                    }
+                    return
+                }
+                
+                guard let totalResults = products["Total"], totalResults as! Int > 0 else {
+                    // TODO: Add a notification over top of view
+                    print("NO RESULTS")
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                    }
+                    return
+                }
+                
+                // Iterate over results
+                for wine in wineList as! [AnyObject] {
+                    let searchedWine = Wine(context: self.stack.context, dictionary: wine as! [String: AnyObject])
+                    self.wineArray.append(searchedWine)
+                }
+                
+                DispatchQueue.main.async {
+                    self.searchResultsTableView.isHidden = false
+                    self.activityIndicator.stopAnimating()
+                    self.searchResultsTableView.reloadData()
+                }
+            }
+        }
+    }
+    
     // MARK: Delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -112,6 +135,7 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         textField.resignFirstResponder()
         return true
     }
+    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
@@ -127,26 +151,49 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         cell.nameLabel.text = wineArray[indexPath.row].name
         cell.typeLabel.text = wineArray[indexPath.row].wineType
         cell.vintageLabel.text =  wineArray[indexPath.row].vintage
+        cell.infoUrl = wineArray[indexPath.row].url
+        
+        if let url = wineArray[indexPath.row].labelUrl {
+            cell.downloadImage(imageUrl: url) { (data, error) in
+                if error == nil {
+                    DispatchQueue.main.async {
+                        cell.labelImageView.image = UIImage(data: data!)
+                    }
+                }
+            }
+        } else {
+            print("NO IMAGE")
+        }
+        
+        cell.wineRackButton.tag = indexPath.row
+        cell.wishListButton.tag = indexPath.row
+        
+        cell.wineRackButton.addTarget(self, action: #selector(addWineToRack(_:)), for: .touchUpInside)
         
         return cell
     }
     
+    func addWineToRack(_ sender: UIButton) {
+        wineRack.addToWines(wineArray[sender.tag])
+        
+        do {
+            try stack.saveContext()
+        } catch {
+            fatalError("Context cannot be saved")
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true // CODE HERE
+        return true
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // CODE HERE
+        tableView.allowsSelection = false
     }
 
     
     // MARK: Extensions
-    
-
-    
-    // MARK: TextField methods
-    
-    
     
 
     /*

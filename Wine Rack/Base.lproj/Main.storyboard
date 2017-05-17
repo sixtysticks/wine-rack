@@ -28,7 +28,6 @@
                                     <navigationItem title="Wine Rack" id="srI-xg-JY2">
                                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="1v3-oO-c8q">
                                             <connections>
-                                                <action selector="openSearchController:" destination="BYZ-38-t0r" id="1kq-0X-tla"/>
                                                 <segue destination="4gF-QA-GbY" kind="popoverPresentation" popoverAnchorBarButtonItem="1v3-oO-c8q" id="bZO-ma-hgu">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
@@ -41,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WineCell" id="BeR-HQ-Gim">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WineCell" id="BeR-HQ-Gim" customClass="SearchTableViewCell" customModule="Wine_Rack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeR-HQ-Gim" id="77H-7W-dBF">
@@ -131,7 +130,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-Yc-8aq">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text here..." textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-Yc-8aq">
                                 <rect key="frame" x="16" y="84" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eUb-Sb-jKg"/>
@@ -156,6 +155,9 @@
                                     <action selector="searchButtonPressed:" destination="4gF-QA-GbY" eventType="touchUpInside" id="mZu-3q-lJF"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="u1i-wh-cha">
+                                <rect key="frame" x="169" y="234" width="37" height="37"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KHR-tO-eoU">
                                 <rect key="frame" x="0.0" y="214" width="375" height="453"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,11 +183,13 @@
                             <constraint firstItem="h0X-E8-zQc" firstAttribute="trailing" secondItem="ump-bg-8oD" secondAttribute="trailingMargin" id="0Tk-zb-pzq"/>
                             <constraint firstItem="ZEX-zt-eOk" firstAttribute="top" secondItem="fF2-8k-JtF" secondAttribute="bottom" id="2VE-4X-zbq"/>
                             <constraint firstAttribute="trailing" secondItem="ZEX-zt-eOk" secondAttribute="trailing" id="5A2-aO-Jq7"/>
+                            <constraint firstItem="u1i-wh-cha" firstAttribute="top" secondItem="h0X-E8-zQc" secondAttribute="bottom" constant="40" id="8xS-bY-6CG"/>
                             <constraint firstItem="ZEX-zt-eOk" firstAttribute="leading" secondItem="ump-bg-8oD" secondAttribute="leading" id="AP3-Ok-xh8"/>
                             <constraint firstItem="zMw-iR-ebj" firstAttribute="top" secondItem="KHR-tO-eoU" secondAttribute="bottom" id="C9v-bi-CtL"/>
                             <constraint firstItem="KHR-tO-eoU" firstAttribute="top" secondItem="h0X-E8-zQc" secondAttribute="bottom" constant="20" id="IoD-vH-wPq"/>
                             <constraint firstAttribute="trailing" secondItem="KHR-tO-eoU" secondAttribute="trailing" id="JMb-Cu-d49"/>
                             <constraint firstItem="oqa-Yc-8aq" firstAttribute="leading" secondItem="ump-bg-8oD" secondAttribute="leadingMargin" id="V8m-CF-2Rn"/>
+                            <constraint firstItem="u1i-wh-cha" firstAttribute="centerX" secondItem="ump-bg-8oD" secondAttribute="centerX" id="eoK-8m-k15"/>
                             <constraint firstItem="oqa-Yc-8aq" firstAttribute="trailing" secondItem="ump-bg-8oD" secondAttribute="trailingMargin" id="mV3-oe-dcI"/>
                             <constraint firstItem="h0X-E8-zQc" firstAttribute="top" secondItem="oqa-Yc-8aq" secondAttribute="bottom" constant="10" id="oyi-8Z-Xwo"/>
                             <constraint firstItem="KHR-tO-eoU" firstAttribute="leading" secondItem="ump-bg-8oD" secondAttribute="leading" id="rlb-M0-mGN"/>
@@ -194,6 +198,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="u1i-wh-cha" id="6e9-zf-vXY"/>
                         <outlet property="searchButton" destination="h0X-E8-zQc" id="IQg-Sd-a5y"/>
                         <outlet property="searchResultsTableView" destination="KHR-tO-eoU" id="yhw-H0-lAM"/>
                         <outlet property="searchTextField" destination="oqa-Yc-8aq" id="rXE-Ur-51y"/>
@@ -242,8 +247,9 @@
                                     <navigationItem title="Wine Rack" id="w9l-Sz-K1y">
                                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="nF1-ca-Q80">
                                             <connections>
-                                                <action selector="openSearchController:" destination="UPO-lQ-yJU" id="ITQ-1n-ZsT"/>
-                                                <segue destination="4gF-QA-GbY" kind="presentation" id="OwP-wv-6Du"/>
+                                                <segue destination="4gF-QA-GbY" kind="popoverPresentation" popoverAnchorBarButtonItem="nF1-ca-Q80" id="OwP-wv-6Du">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -253,28 +259,12 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WineCell" textLabel="Nj9-eU-8QM" detailTextLabel="Lv6-9U-rmC" style="IBUITableViewCellStyleSubtitle" id="9gz-HH-IPC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WineCell" id="9gz-HH-IPC" customClass="SearchTableViewCell" customModule="Wine_Rack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9gz-HH-IPC" id="usp-3V-aC3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nj9-eU-8QM">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lv6-9U-rmC">
-                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -338,6 +328,6 @@
         <image name="WineBottle" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OwP-wv-6Du"/>
+        <segue reference="bZO-ma-hgu"/>
     </inferredMetricsTieBreakers>
 </document>

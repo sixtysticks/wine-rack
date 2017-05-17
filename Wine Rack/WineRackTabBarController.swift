@@ -9,7 +9,12 @@
 import UIKit
 
 class WineRackTabBarController: UITabBarController {
-
+    
+    // MARK: IBOutlets
+    // MARK: IBActions
+    // MARK: Variables/Constants
+    // MARK: Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,12 +34,25 @@ class WineRackTabBarController: UITabBarController {
         let statusBar = UIView(frame: frame)
         statusBar.backgroundColor = UIColor.wineRackLightRed
         self.view.addSubview(statusBar)
-    
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    // MARK: Private methods
+    
+    
+    // MARK: Delegate methods
+    
+    
+    
+    // MARK: Extensions
+    
+
+    
+    
+    
 
 }
 

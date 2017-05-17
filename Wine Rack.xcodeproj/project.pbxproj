@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262C22091EB69436000B19CE /* WineRack+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C22051EB69436000B19CE /* WineRack+CoreDataProperties.swift */; };
+		262C220A1EB69436000B19CE /* WishList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C22061EB69436000B19CE /* WishList+CoreDataClass.swift */; };
+		262C220B1EB69436000B19CE /* WishList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C22071EB69436000B19CE /* WishList+CoreDataProperties.swift */; };
+		262C220C1EB69436000B19CE /* Wine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C22081EB69436000B19CE /* Wine+CoreDataProperties.swift */; };
 		263DA1A01EA37661009D0B88 /* WineAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263DA19F1EA37661009D0B88 /* WineAPIClient.swift */; };
-		263DA1A31EA387C8009D0B88 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263DA1A21EA387C8009D0B88 /* Wine.swift */; };
 		2663C4EA1E96E521006C821B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C4E91E96E521006C821B /* AppDelegate.swift */; };
 		2663C4EF1E96E521006C821B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2663C4ED1E96E521006C821B /* Main.storyboard */; };
 		2663C4F21E96E521006C821B /* Wine_Rack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2663C4F01E96E521006C821B /* Wine_Rack.xcdatamodeld */; };
@@ -19,6 +22,9 @@
 		2663C50B1E9785B1006C821B /* WRNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C50A1E9785B1006C821B /* WRNavBar.swift */; };
 		2682CEDD1E98358C0047ABCF /* WineRackTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CEDC1E98358C0047ABCF /* WineRackTabBarController.swift */; };
 		2682CEDF1E9978CC0047ABCF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CEDE1E9978CC0047ABCF /* Constants.swift */; };
+		26879C141EB4E7DF008A6BCD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26879C131EB4E7DF008A6BCD /* CoreDataStack.swift */; };
+		26879C411EB4F3BB008A6BCD /* Wine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26879C3B1EB4F3BB008A6BCD /* Wine+CoreDataClass.swift */; };
+		26879C431EB4F3BB008A6BCD /* WineRack+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26879C3D1EB4F3BB008A6BCD /* WineRack+CoreDataClass.swift */; };
 		269004EE1EABB505003A4C6C /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269004EC1EABB505003A4C6C /* SearchTableViewCell.swift */; };
 		269004EF1EABB505003A4C6C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269004ED1EABB505003A4C6C /* SearchTableViewCell.xib */; };
 		26E96F4B1E9981C700017294 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E96F4A1E9981C700017294 /* Extensions.swift */; };
@@ -26,8 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		262C22051EB69436000B19CE /* WineRack+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WineRack+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		262C22061EB69436000B19CE /* WishList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WishList+CoreDataClass.swift"; path = "Wine Rack/WishList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		262C22071EB69436000B19CE /* WishList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WishList+CoreDataProperties.swift"; path = "Wine Rack/WishList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		262C22081EB69436000B19CE /* Wine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Wine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		263DA19F1EA37661009D0B88 /* WineAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineAPIClient.swift; sourceTree = "<group>"; };
-		263DA1A21EA387C8009D0B88 /* Wine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		2663C4E61E96E521006C821B /* Wine Rack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wine Rack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2663C4E91E96E521006C821B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2663C4EE1E96E521006C821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +49,9 @@
 		2663C50A1E9785B1006C821B /* WRNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRNavBar.swift; sourceTree = "<group>"; };
 		2682CEDC1E98358C0047ABCF /* WineRackTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineRackTabBarController.swift; sourceTree = "<group>"; };
 		2682CEDE1E9978CC0047ABCF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		26879C131EB4E7DF008A6BCD /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		26879C3B1EB4F3BB008A6BCD /* Wine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Wine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26879C3D1EB4F3BB008A6BCD /* WineRack+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WineRack+CoreDataClass.swift"; sourceTree = "<group>"; };
 		269004EC1EABB505003A4C6C /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		269004ED1EABB505003A4C6C /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		26E96F4A1E9981C700017294 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -57,6 +69,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		262C220D1EB6944E000B19CE /* WishList */ = {
+			isa = PBXGroup;
+			children = (
+				262C22061EB69436000B19CE /* WishList+CoreDataClass.swift */,
+				262C22071EB69436000B19CE /* WishList+CoreDataProperties.swift */,
+			);
+			name = WishList;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		263DA19D1EA375F4009D0B88 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,7 +98,10 @@
 		263DA1A11EA387B8009D0B88 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				263DA1A21EA387C8009D0B88 /* Wine.swift */,
+				2663C4F01E96E521006C821B /* Wine_Rack.xcdatamodeld */,
+				26879C451EB4F40F008A6BCD /* Wine */,
+				26879C461EB4F420008A6BCD /* WineRack */,
+				262C220D1EB6944E000B19CE /* WishList */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -128,7 +153,7 @@
 			children = (
 				263DA1A11EA387B8009D0B88 /* Custom */,
 				263DA19D1EA375F4009D0B88 /* Clients */,
-				2663C4F01E96E521006C821B /* Wine_Rack.xcdatamodeld */,
+				26879C131EB4E7DF008A6BCD /* CoreDataStack.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -150,6 +175,24 @@
 				2663C4F81E96E521006C821B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26879C451EB4F40F008A6BCD /* Wine */ = {
+			isa = PBXGroup;
+			children = (
+				26879C3B1EB4F3BB008A6BCD /* Wine+CoreDataClass.swift */,
+				262C22081EB69436000B19CE /* Wine+CoreDataProperties.swift */,
+			);
+			name = Wine;
+			sourceTree = "<group>";
+		};
+		26879C461EB4F420008A6BCD /* WineRack */ = {
+			isa = PBXGroup;
+			children = (
+				26879C3D1EB4F3BB008A6BCD /* WineRack+CoreDataClass.swift */,
+				262C22051EB69436000B19CE /* WineRack+CoreDataProperties.swift */,
+			);
+			name = WineRack;
 			sourceTree = "<group>";
 		};
 		26E96F4C1E99831E00017294 /* Storyboards */ = {
@@ -236,16 +279,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				263DA1A01EA37661009D0B88 /* WineAPIClient.swift in Sources */,
+				262C22091EB69436000B19CE /* WineRack+CoreDataProperties.swift in Sources */,
 				2663C4F21E96E521006C821B /* Wine_Rack.xcdatamodeld in Sources */,
+				262C220A1EB69436000B19CE /* WishList+CoreDataClass.swift in Sources */,
 				2663C50B1E9785B1006C821B /* WRNavBar.swift in Sources */,
 				2663C5011E96E68E006C821B /* WishlistViewController.swift in Sources */,
 				26E96F4B1E9981C700017294 /* Extensions.swift in Sources */,
-				263DA1A31EA387C8009D0B88 /* Wine.swift in Sources */,
+				26879C141EB4E7DF008A6BCD /* CoreDataStack.swift in Sources */,
 				2663C4EA1E96E521006C821B /* AppDelegate.swift in Sources */,
 				26E96F4E1E9A8FF700017294 /* WineSearchViewController.swift in Sources */,
+				26879C431EB4F3BB008A6BCD /* WineRack+CoreDataClass.swift in Sources */,
 				2682CEDF1E9978CC0047ABCF /* Constants.swift in Sources */,
+				262C220B1EB69436000B19CE /* WishList+CoreDataProperties.swift in Sources */,
+				26879C411EB4F3BB008A6BCD /* Wine+CoreDataClass.swift in Sources */,
 				269004EE1EABB505003A4C6C /* SearchTableViewCell.swift in Sources */,
 				2663C4FF1E96E678006C821B /* WineListViewController.swift in Sources */,
+				262C220C1EB69436000B19CE /* Wine+CoreDataProperties.swift in Sources */,
 				2682CEDD1E98358C0047ABCF /* WineRackTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

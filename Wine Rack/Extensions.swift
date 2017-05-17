@@ -15,4 +15,5 @@ extension UIColor {
     static let wineRackPink = UIColor(red: 210/255.0, green: 127/255.0, blue: 143/255.0, alpha: 1.0)
     static let wineRackOrange = UIColor(red: 194/255.0, green: 132/255.0, blue: 77/255.0, alpha: 1.0)
     static let wineRackGrey = UIColor(red: 118/255.0, green: 112/255.0, blue: 102/255.0, alpha: 1.0)
+    static let wineRackLightGrey = UIColor(red: 200/255.0, green: 199/255.0, blue: 204/255.0, alpha: 1.0)
 }
