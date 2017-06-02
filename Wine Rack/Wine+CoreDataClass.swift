@@ -21,6 +21,8 @@ public class Wine: NSManagedObject {
             self.wineType = dictionary["Varietal"]?["Name"] as? String
             self.vintage = dictionary["Vintage"] as? String
             self.creationDate = Date() as NSDate?
+            self.inWineRack = false
+            self.onWishlist = false
             
             if let labels = dictionary["Labels"] as? [AnyObject], let label = labels.first {
                 let originalLabelUrl = label["Url"] as? String

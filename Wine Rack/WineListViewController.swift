@@ -25,11 +25,10 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     
     let stack = CoreDataStack.sharedInstance()
     
-    var wineRack = WineRack(context: CoreDataStack.sharedInstance().context)
-    
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Wine")
         fr.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        fr.predicate = NSPredicate(format: "inWineRack == true")
         
         return NSFetchedResultsController(fetchRequest: fr, managedObjectContext: self.stack.context, sectionNameKeyPath: nil,cacheName: nil)
     }()
@@ -39,11 +38,11 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         fetchedResultsController?.delegate = self
         
-//        do {
-//            try fetchedResultsController?.performFetch()
-//        } catch {
-//            fatalError("Error in 'viewDidLoad' method")
-//        }
+        do {
+            try fetchedResultsController?.performFetch()
+        } catch {
+            fatalError("Error in 'viewDidAppear' method")
+        }
         
         let fetchedWines = self.fetchedResultsController?.fetchedObjects
         print("Wines (viewDidAppear): \(String(describing: fetchedWines?.count))")
@@ -96,7 +95,8 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let frc = fetchedResultsController {
-            return (frc.sections?.count)!
+            print("COOUUNNT: \(frc.fetchedObjects!.count)")
+            return (frc.fetchedObjects!.count)
         } else {
             return 0
         }
@@ -105,15 +105,14 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WineCell") as! SearchTableViewCell
         
-        
         do {
             try fetchedResultsController?.performFetch()
         } catch {
             fatalError("Error in 'viewDidLoad' method")
         }
-
         
         if (fetchedResultsController?.fetchedObjects?.count)! > 0 {
+
             let wine = fetchedResultsController?.object(at: indexPath) as? Wine
             
             cell.nameLabel.text = wine?.name

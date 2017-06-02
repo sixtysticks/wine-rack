@@ -34,7 +34,6 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     let stack = CoreDataStack.sharedInstance()
     var wineArray = [Wine]()
-    var wineRack = WineRack(context: CoreDataStack.sharedInstance().context)
     
     // MARK: Lifecycle methods
     
@@ -174,7 +173,7 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     func addWineToRack(_ sender: UIButton) {
-        wineRack.addToWines(wineArray[sender.tag])
+        wineArray[sender.tag].inWineRack = true
         
         do {
             try stack.saveContext()

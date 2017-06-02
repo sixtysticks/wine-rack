@@ -2,7 +2,7 @@
 //  Wine+CoreDataProperties.swift
 //  Wine Rack
 //
-//  Created by David Gibbs on 15/05/2017.
+//  Created by David Gibbs on 01/06/2017.
 //  Copyright © 2017 SixtySticks. All rights reserved.
 //
 
@@ -23,7 +23,7 @@ extension Wine {
     @NSManaged public var url: String?
     @NSManaged public var vintage: String?
     @NSManaged public var wineType: String?
-    @NSManaged public var wineRack: WineRack?
-    @NSManaged public var wishList: WishList?
+    @NSManaged public var onWishlist: Bool
+    @NSManaged public var inWineRack: Bool
 
 }
