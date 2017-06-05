@@ -9,6 +9,10 @@
 import UIKit
 import QuartzCore
 
+protocol WineRackTableDelegate {
+    func wineRackIsUpdated()
+}
+
 class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: IBOutlets
@@ -23,7 +27,9 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         searchTextField.resignFirstResponder()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) { 
+            self.wineRackDelegate?.wineRackIsUpdated()
+        }
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
@@ -31,6 +37,8 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     // MARK: Variables/Constants
+    
+    var wineRackDelegate: WineRackTableDelegate? = WineListViewController()
     
     let stack = CoreDataStack.sharedInstance()
     var wineArray = [Wine]()
@@ -174,6 +182,7 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     func addWineToRack(_ sender: UIButton) {
         wineArray[sender.tag].inWineRack = true
+        wineRackDelegate?.wineRackIsUpdated()
         
         do {
             try stack.saveContext()

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class WineListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class WineListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, WineRackTableDelegate {
     
     // MARK: IBOutlets
     
@@ -27,7 +27,7 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Wine")
-        fr.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fr.predicate = NSPredicate(format: "inWineRack == true")
         
         return NSFetchedResultsController(fetchRequest: fr, managedObjectContext: self.stack.context, sectionNameKeyPath: nil,cacheName: nil)
@@ -36,16 +36,18 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: Lifecycle methods
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchedResultsController?.delegate = self
+        super.viewDidAppear(true)
         
         do {
             try fetchedResultsController?.performFetch()
         } catch {
-            fatalError("Error in 'viewDidAppear' method")
+            fatalError("Error in 'viewDidLoad' method")
         }
         
-        let fetchedWines = self.fetchedResultsController?.fetchedObjects
-        print("Wines (viewDidAppear): \(String(describing: fetchedWines?.count))")
+        DispatchQueue.main.async {
+            self.hasSavedWines()
+            self.wineListTableView?.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -62,9 +64,6 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
         // Set nav bar style
         wineRackNavBar.setBarBackgroundColor(UIColor.wineRackLightRed)
         
-        // Set view depending on whether user has saved wines
-        hasSavedWines()
-        
         // Hide tableView by default, and only show if we have wines saved
         wineListTableView.isHidden = true
         
@@ -73,6 +72,9 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Register nib
         wineListTableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "WineCell")
+        
+        self.wineListTableView.rowHeight = UITableViewAutomaticDimension
+        self.wineListTableView.estimatedRowHeight = 120.00
     }
     
     // MARK: Private methods
@@ -93,9 +95,15 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: Delegate methods
     
+    func wineRackIsUpdated() {
+        DispatchQueue.main.async {
+//            self.hasSavedWines()
+            self.wineListTableView?.reloadData()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let frc = fetchedResultsController {
-            print("COOUUNNT: \(frc.fetchedObjects!.count)")
             return (frc.fetchedObjects!.count)
         } else {
             return 0
@@ -104,12 +112,6 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WineCell") as! SearchTableViewCell
-        
-        do {
-            try fetchedResultsController?.performFetch()
-        } catch {
-            fatalError("Error in 'viewDidLoad' method")
-        }
         
         if (fetchedResultsController?.fetchedObjects?.count)! > 0 {
 
@@ -132,11 +134,10 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
                 print("NO IMAGE")
             }
             
-            cell.wineRackButton.isEnabled = false
-            cell.wishListButton.isEnabled = true
+            cell.wineRackButton.isHidden = true
+            cell.wishListButton.isHidden = true
         }
 
-        
         return cell
     }
     

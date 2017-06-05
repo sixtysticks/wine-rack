@@ -41,7 +41,7 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     @IBAction func wineRackButtonPressed(_ sender: UIButton) {
-        print("SENDER TAG FROM CELL: \(sender.tag)")
+//        wineRackDelegate?.wineRackIsUpdated()
     }
     
     @IBAction func wishListButtonPressed(_ sender: UIButton) {
@@ -52,6 +52,7 @@ class SearchTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.selectionStyle = .none
+        
         
         configureUI()
 
