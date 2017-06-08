@@ -10,11 +10,8 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
     
-    var infoUrl: String?
-    var labelImageUrl: String?
+    // MARK: IBOutlets
     
-    let stack = CoreDataStack.sharedInstance()
-
     @IBOutlet weak var labelImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
@@ -22,10 +19,10 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var wineRackButton: UIButton!
     @IBOutlet weak var wishListButton: UIButton!
-
+    
+    // MARK: IBActions
     
     @IBAction func infoButtonPressed(_ sender: UIButton) {
-        
         if let url = infoUrl {
             let validUrl = URL(string: url)
             
@@ -37,26 +34,31 @@ class SearchTableViewCell: UITableViewCell {
         } else {
             print("INFO URL WASN'T VALID")
         }
-           
     }
     
     @IBAction func wineRackButtonPressed(_ sender: UIButton) {
-//        wineRackDelegate?.wineRackIsUpdated()
+        // TODO: Add to winerack popup
     }
     
     @IBAction func wishListButtonPressed(_ sender: UIButton) {
-//        print("ADD TO WISHLIST")
-    }    
+        // TODO: Add to wishlist popup
+    }
+    
+    // MARK: Variables/Constants
+    
+    var infoUrl: String?
+    var labelImageUrl: String?
+    let stack = CoreDataStack.sharedInstance()
+    
+    // MARK: Lifecycle methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.selectionStyle = .none
-        
-        
         configureUI()
-
     }
+    
+    // MARK: Private methods
     
     func configureUI() {
         labelImageView.layer.cornerRadius = 3
@@ -72,7 +74,6 @@ class SearchTableViewCell: UITableViewCell {
         
         wishListButton.backgroundColor = UIColor.wineRackLightRed
         wishListButton.layer.cornerRadius = 3
-        
     }
     
     func downloadImage( imageUrl:String, completionHandler: @escaping (_ imageData: Data?, _ errorString: String?) -> Void){
@@ -81,7 +82,6 @@ class SearchTableViewCell: UITableViewCell {
         let request = URLRequest(url: imgURL!)
         
         let task = session.dataTask(with: request as URLRequest) {data, response, downloadError in
-            
             if downloadError != nil {
                 completionHandler(nil, "Could not download image \(imageUrl)")
             } else {
@@ -95,10 +95,7 @@ class SearchTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-        
+        // TODO: Configure the view for the selected state
     }
-    
-    
     
 }

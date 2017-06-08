@@ -19,8 +19,6 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var noWinesView: UIView!
     @IBOutlet weak var noWinesLabel: UILabel!
     
-    // MARK: IBActions
-    
     // MARK: Variables/Constants
     
     let stack = CoreDataStack.sharedInstance()
@@ -41,7 +39,7 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
         do {
             try fetchedResultsController?.performFetch()
         } catch {
-            fatalError("Error in 'viewDidLoad' method")
+            fatalError("Error in 'viewAppear' method")
         }
         
         DispatchQueue.main.async {
@@ -67,7 +65,7 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
         // Hide tableView by default, and only show if we have wines saved
         wineListTableView.isHidden = true
         
-        noWinesLabel.text = Constants.NoWinesLabel.WishList
+        noWinesLabel.text = Constants.NoWinesLabel.WineList
         noWinesLabel.textColor = UIColor.wineRackLightRed
         
         // Register nib
@@ -97,7 +95,6 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func wineRackIsUpdated() {
         DispatchQueue.main.async {
-//            self.hasSavedWines()
             self.wineListTableView?.reloadData()
         }
     }
@@ -140,16 +137,5 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
 
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true // CODE HERE
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // CODE HERE
-    }
-    
-    // MARK: Extensions
-    
     
 }

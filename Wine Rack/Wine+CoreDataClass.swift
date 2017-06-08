@@ -15,7 +15,7 @@ public class Wine: NSManagedObject {
     convenience init(context: NSManagedObjectContext, dictionary: [String: AnyObject]) {
         if let ent = NSEntityDescription.entity(forEntityName: "Wine", in: context) {
             self.init(entity: ent, insertInto: context)
-            self.id = dictionary["Id"] as? String
+            self.id = (dictionary["Id"] as? Int32)!
             self.name = dictionary["Name"] as? String
             self.url = dictionary["Url"] as? String
             self.wineType = dictionary["Varietal"]?["Name"] as? String

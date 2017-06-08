@@ -8,6 +8,7 @@
 
 import UIKit
 import QuartzCore
+import CoreData
 
 protocol WineRackTableDelegate {
     func wineRackIsUpdated()
@@ -27,13 +28,21 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         searchTextField.resignFirstResponder()
-        self.dismiss(animated: true) { 
+        
+        do {
+            try stack.saveContext()
+        } catch {
+            fatalError("Context cannot be saved")
+        }
+        
+        self.dismiss(animated: true) {
             self.wineRackDelegate?.wineRackIsUpdated()
         }
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         fetchSearchRequest()
+        self.wineRackDelegate?.wineRackIsUpdated()
     }
     
     // MARK: Variables/Constants
@@ -143,7 +152,6 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         return true
     }
     
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
@@ -172,23 +180,27 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
             print("NO IMAGE")
         }
         
+        if DataManager.sharedInstance().isInWineRack(wineId: wineArray[indexPath.row].id) {
+            cell.wineRackButton.isHidden = true
+        }
+        
         cell.wineRackButton.tag = indexPath.row
         cell.wishListButton.tag = indexPath.row
         
         cell.wineRackButton.addTarget(self, action: #selector(addWineToRack(_:)), for: .touchUpInside)
+        cell.wishListButton.addTarget(self, action: #selector(addWineToWishList(_:)), for: .touchUpInside)
         
         return cell
     }
     
     func addWineToRack(_ sender: UIButton) {
         wineArray[sender.tag].inWineRack = true
-        wineRackDelegate?.wineRackIsUpdated()
-        
-        do {
-            try stack.saveContext()
-        } catch {
-            fatalError("Context cannot be saved")
-        }
+        wineArray[sender.tag].onWishlist = false
+    }
+    
+    func addWineToWishList(_ sender: UIButton) {
+        wineArray[sender.tag].inWineRack = false
+        wineArray[sender.tag].onWishlist = true
     }
     
     
@@ -199,19 +211,5 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.allowsSelection = false
     }
-
-    
-    // MARK: Extensions
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

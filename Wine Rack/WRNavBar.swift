@@ -9,6 +9,8 @@
 import UIKit
 
 class WRNavBar: UINavigationBar {
+    
+    // MARK: Lifecycle methods
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -21,11 +23,12 @@ class WRNavBar: UINavigationBar {
         
         // Set bar title color
         self.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
     }
     
+    // MARK: Private methods
+    
     func setBarBackgroundColor(_ color: UIColor) {
-        self.barTintColor =  color
+        self.barTintColor = color
     }
 
 }
