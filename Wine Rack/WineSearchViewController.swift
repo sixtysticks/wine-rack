@@ -90,7 +90,6 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: Private methods
@@ -121,8 +120,11 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
                 }
                 
                 guard let totalResults = products["Total"], totalResults as! Int > 0 else {
-                    // TODO: Add a notification over top of view
-                    print("NO RESULTS")
+                    
+                    let alert = UIAlertController(title: "No results found", message: "There were no results for your search. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+
                     DispatchQueue.main.async {
                         self.activityIndicator.stopAnimating()
                     }
@@ -131,8 +133,20 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
                 
                 // Iterate over results
                 for wine in wineList as! [AnyObject] {
-                    let searchedWine = Wine(context: self.stack.context, dictionary: wine as! [String: AnyObject])
-                    self.wineArray.append(searchedWine)
+                    
+                    var searchedWine: Wine?
+                    
+                    if let wineDict = wine as? [String: AnyObject] {
+                        if let wineID = wineDict["Id"] as? Int32 {
+                            if let savedWine = DataManager.sharedInstance().findWineById(wineID) {
+                                searchedWine = savedWine
+                            } else {
+                                searchedWine = Wine(context: self.stack.context, dictionary: wineDict)
+                            }
+                        }
+                    }
+                    
+                    self.wineArray.append(searchedWine!)
                 }
                 
                 DispatchQueue.main.async {
@@ -180,10 +194,6 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
             print("NO IMAGE")
         }
         
-        if DataManager.sharedInstance().isInWineRack(wineId: wineArray[indexPath.row].id) {
-            cell.wineRackButton.isHidden = true
-        }
-        
         cell.wineRackButton.tag = indexPath.row
         cell.wishListButton.tag = indexPath.row
         
@@ -202,7 +212,6 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         wineArray[sender.tag].inWineRack = false
         wineArray[sender.tag].onWishlist = true
     }
-    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

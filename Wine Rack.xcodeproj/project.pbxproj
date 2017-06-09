@@ -84,7 +84,6 @@
 			children = (
 				2663C4F01E96E521006C821B /* Wine_Rack.xcdatamodeld */,
 				26879C451EB4F40F008A6BCD /* Wine */,
-				2611CC121EE8A3220000871F /* DataManager.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -137,6 +136,7 @@
 				263DA1A11EA387B8009D0B88 /* Custom */,
 				263DA19D1EA375F4009D0B88 /* Clients */,
 				26879C131EB4E7DF008A6BCD /* CoreDataStack.swift */,
+				2611CC121EE8A3220000871F /* DataManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";

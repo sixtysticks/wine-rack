@@ -11,8 +11,8 @@ import Foundation
 struct Constants {
     
     struct NoWinesLabel {
-        static let WineList = "You currently do not have any wines in your wine rack. Tap the search icon above to find wines you've recently enjoyed"
-        static let WishList = "There are no wines on your wishlist. Tap the search icon above to browse"
+        static let WineList = "You currently do not have any wines in your wine rack. Tap the search icon above to find wines you've recently enjoyed. To remove wines from your wine rack, swipe the wine row left"
+        static let WishList = "There are no wines on your wishlist. Tap the search icon above to browse. To remove wines from your wishlist, swipe the wine row left"
     }
     
     struct APIUrl {

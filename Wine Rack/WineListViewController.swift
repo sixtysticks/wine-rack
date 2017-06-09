@@ -39,7 +39,7 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
         do {
             try fetchedResultsController?.performFetch()
         } catch {
-            fatalError("Error in 'viewAppear' method")
+            fatalError("Error in 'viewDidAppear' method")
         }
         
         DispatchQueue.main.async {
@@ -134,8 +134,37 @@ class WineListViewController: UIViewController, UITableViewDelegate, UITableView
             cell.wineRackButton.isHidden = true
             cell.wishListButton.isHidden = true
         }
-
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let removeAction = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
+            let wine = self.fetchedResultsController?.object(at: indexPath) as? Wine
+            wine?.inWineRack = false
+            
+            do {
+                try self.fetchedResultsController?.performFetch()
+            } catch {
+                fatalError("Error in 'tableView:editActionsForRowAt:' method")
+            }
+            
+            DispatchQueue.main.async {
+                self.hasSavedWines()
+                self.wineListTableView?.reloadData()
+            }
+            
+            do {
+                try self.stack.saveContext()
+            } catch {
+                fatalError("Context cannot be saved")
+            }
+        }
+        
+        removeAction.backgroundColor = UIColor.wineRackDarkRed
+        
+        return [removeAction]
     }
     
 }

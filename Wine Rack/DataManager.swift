@@ -21,24 +21,19 @@ class DataManager {
         return Singleton.sharedInstance
     }
     
-    func isInWineRack(wineId: Int32) -> Bool {
-        
+    func findWineById(_ wineId: Int32) -> Wine? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Wine")
-        fetchRequest.predicate = NSPredicate(format: "inWineRack == true")
+        fetchRequest.predicate = NSPredicate(format: "id == \(wineId)")
         
         do {
             let results = try stack.context.fetch(fetchRequest)
-            if results.count > 0 {
-                print("WINE ID: \(wineId)")
-                return true
-            } else {
-                print("NO DICE")
-                return false
+            if results.count == 1 {
+                return (results.first as! Wine)
             }
         } catch let error {
-            print("searchInWineRack error: \(error)")
-            return false
+            print("findWineById error: \(error)")
         }
+        return nil
     }
     
 }
