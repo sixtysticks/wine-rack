@@ -18,6 +18,7 @@
 		2663C4FF1E96E678006C821B /* WineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C4FE1E96E678006C821B /* WineListViewController.swift */; };
 		2663C5011E96E68E006C821B /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C5001E96E68E006C821B /* WishlistViewController.swift */; };
 		2663C50B1E9785B1006C821B /* WRNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C50A1E9785B1006C821B /* WRNavBar.swift */; };
+		266F8CF71EEBEA0B00286489 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F8CF61EEBEA0B00286489 /* Reach.swift */; };
 		2682CEDD1E98358C0047ABCF /* WineRackTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CEDC1E98358C0047ABCF /* WineRackTabBarController.swift */; };
 		2682CEDF1E9978CC0047ABCF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CEDE1E9978CC0047ABCF /* Constants.swift */; };
 		26879C141EB4E7DF008A6BCD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26879C131EB4E7DF008A6BCD /* CoreDataStack.swift */; };
@@ -42,6 +43,7 @@
 		2663C4FE1E96E678006C821B /* WineListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineListViewController.swift; sourceTree = "<group>"; };
 		2663C5001E96E68E006C821B /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		2663C50A1E9785B1006C821B /* WRNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRNavBar.swift; sourceTree = "<group>"; };
+		266F8CF61EEBEA0B00286489 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		2682CEDC1E98358C0047ABCF /* WineRackTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineRackTabBarController.swift; sourceTree = "<group>"; };
 		2682CEDE1E9978CC0047ABCF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		26879C131EB4E7DF008A6BCD /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				2663C5021E96E695006C821B /* Controllers */,
 				26E96F4C1E99831E00017294 /* Storyboards */,
 				2663C5051E96E6D3006C821B /* Supporting Files */,
+				266F8CF51EEBE94C00286489 /* Libraries */,
 			);
 			path = "Wine Rack";
 			sourceTree = "<group>";
@@ -158,6 +161,14 @@
 				2663C4F81E96E521006C821B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		266F8CF51EEBE94C00286489 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				266F8CF61EEBEA0B00286489 /* Reach.swift */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 		26879C451EB4F40F008A6BCD /* Wine */ = {
@@ -263,6 +274,7 @@
 				26E96F4E1E9A8FF700017294 /* WineSearchViewController.swift in Sources */,
 				2682CEDF1E9978CC0047ABCF /* Constants.swift in Sources */,
 				26879C411EB4F3BB008A6BCD /* Wine+CoreDataClass.swift in Sources */,
+				266F8CF71EEBEA0B00286489 /* Reach.swift in Sources */,
 				269004EE1EABB505003A4C6C /* SearchTableViewCell.swift in Sources */,
 				2663C4FF1E96E678006C821B /* WineListViewController.swift in Sources */,
 				262C220C1EB69436000B19CE /* Wine+CoreDataProperties.swift in Sources */,

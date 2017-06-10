@@ -19,6 +19,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var wineRackButton: UIButton!
     @IBOutlet weak var wishListButton: UIButton!
+    @IBOutlet weak var labelActivityIndicator: UIActivityIndicatorView!
     
     // MARK: IBActions
     
@@ -74,6 +75,8 @@ class SearchTableViewCell: UITableViewCell {
         
         wishListButton.backgroundColor = UIColor.wineRackLightRed
         wishListButton.layer.cornerRadius = 3
+        
+        labelActivityIndicator.stopAnimating()
     }
     
     func downloadImage( imageUrl:String, completionHandler: @escaping (_ imageData: Data?, _ errorString: String?) -> Void){

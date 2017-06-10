@@ -9,6 +9,7 @@
 import UIKit
 import QuartzCore
 import CoreData
+import SystemConfiguration
 
 protocol WineRackTableDelegate {
     func wineRackIsUpdated()
@@ -48,9 +49,9 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
     // MARK: Variables/Constants
     
     var wineRackDelegate: WineRackTableDelegate? = WineListViewController()
+    var wineArray = [Wine]()
     
     let stack = CoreDataStack.sharedInstance()
-    var wineArray = [Wine]()
     
     // MARK: Lifecycle methods
     
@@ -72,7 +73,7 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         let frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 20)
         let statusBar = UIView(frame: frame)
         statusBar.backgroundColor = UIColor.darkGray
-        self.view.addSubview(statusBar)
+        view.addSubview(statusBar)
         
         // Set style of textfield
         searchTextField.layer.cornerRadius = 25.0
@@ -84,20 +85,32 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         // Register nib
         searchResultsTableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
         
-        self.searchResultsTableView.rowHeight = UITableViewAutomaticDimension
-        self.searchResultsTableView.estimatedRowHeight = 120.00
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        searchResultsTableView.rowHeight = UITableViewAutomaticDimension
+        searchResultsTableView.estimatedRowHeight = 120.00
     }
     
     // MARK: Private methods
     
     func fetchSearchRequest() {
+        
+        let connectionStatus = Reach().connectionStatus()
+        
+        switch connectionStatus {
+        case .unknown, .offline:
+            let alert = UIAlertController(title: "No internet connection", message: "Unfortunately, you are currently not connected to the internet. Please connect to search for wines.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            activityIndicator.stopAnimating()
+            return
+        case .online(.wwan):
+            print("Connected via WWAN")
+        case .online(.wiFi):
+            print("Connected via WiFi")
+        }
+        
         wineArray.removeAll()
         searchResultsTableView.isHidden = true
-        self.activityIndicator.startAnimating()
+        activityIndicator.startAnimating()
         searchTextField.resignFirstResponder()
         
         WineAPIClient.sharedInstance().searchforWine(searchquery: searchTextField.text!) { (result, error) in
@@ -182,11 +195,14 @@ class WineSearchViewController: UIViewController, UITextFieldDelegate, UITableVi
         cell.vintageLabel.text =  wineArray[indexPath.row].vintage
         cell.infoUrl = wineArray[indexPath.row].url
         
+        cell.labelActivityIndicator.startAnimating()
+        
         if let url = wineArray[indexPath.row].labelUrl {
             cell.downloadImage(imageUrl: url) { (data, error) in
                 if error == nil {
                     DispatchQueue.main.async {
                         cell.labelImageView.image = UIImage(data: data!)
+                        cell.labelActivityIndicator.stopAnimating()
                     }
                 }
             }

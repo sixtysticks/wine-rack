@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,6 +31,10 @@
                                     <constraint firstAttribute="height" constant="75" id="haz-zo-7hA"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="J8M-Ha-nlq">
+                                <rect key="frame" x="39" y="29" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-nS-yWq">
                                 <rect key="frame" x="105" y="15" width="205" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -94,6 +98,8 @@
                         <constraints>
                             <constraint firstItem="fTX-DA-52M" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="2Wx-Kg-ScM"/>
                             <constraint firstItem="eoU-RP-6zW" firstAttribute="top" secondItem="fTX-DA-52M" secondAttribute="bottom" constant="4.5" id="4wJ-lm-VKc"/>
+                            <constraint firstItem="J8M-Ha-nlq" firstAttribute="centerY" secondItem="Gpd-mD-NSC" secondAttribute="centerY" id="7rq-8H-6D8"/>
+                            <constraint firstItem="J8M-Ha-nlq" firstAttribute="centerX" secondItem="Gpd-mD-NSC" secondAttribute="centerX" id="8NN-ys-eBf"/>
                             <constraint firstItem="rwI-nS-yWq" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="I4k-eW-SJe"/>
                             <constraint firstItem="eoU-RP-6zW" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="KUe-kF-NRU"/>
                             <constraint firstItem="Ye5-9k-n4M" firstAttribute="leading" secondItem="Gpd-mD-NSC" secondAttribute="trailing" constant="10" id="ReW-D0-x1W"/>
@@ -115,6 +121,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="infoButton" destination="rqR-Bz-vqD" id="5nO-oL-VPV"/>
+                <outlet property="labelActivityIndicator" destination="J8M-Ha-nlq" id="gEu-xk-Ixa"/>
                 <outlet property="labelImageView" destination="Gpd-mD-NSC" id="eD2-eC-S6A"/>
                 <outlet property="nameLabel" destination="rwI-nS-yWq" id="iNF-lA-g5k"/>
                 <outlet property="typeLabel" destination="fTX-DA-52M" id="zGc-Wb-s0P"/>
